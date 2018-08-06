@@ -1,18 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-class App extends Component {
+import "./index.css";
+
+class App extends React.Component {
+  componentDidMount() {
+    let map = new window.google.maps.Map(document.getElementById("map"), {
+      center: { lat: 47.497912, lng: 19.040235 },
+      zoom: 13
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <nav>
+          <h1>Budapest - A Város Amely Egysít</h1>
+          <br />
+          <p>(The City That Unites)</p>
+        </nav>
+        <div className="app-container">
+          <section role="list of places in budapest">
+            <input/>
+            <ul className="placesList">
+              <li>numoro 1</li>
+              <li>numoro 3</li>
+              <li>hier ist 5.</li>
+              <li>das ist kiko</li>
+            </ul>
+          </section>
+          <div id="map" />
+        </div>
       </div>
     );
   }
