@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./index.css";
+import List from './List'
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,31 +19,7 @@ class App extends React.Component {
           <p>(The City That Unites)</p>
         </nav>
         <div className="app-container">
-          <section className='list-section' role="list of places in budapest">
-            <input placeholder='Search for Location'/>
-            <ul>
-              <li>numoro 1</li>
-              <li>numoro 3</li>
-              <li>hier ist 5.</li>
-              <li>das ist kiko</li>
-              <li>numoro 1</li>
-              <li>numoro 3</li>
-              <li>hier ist 5.</li>
-              <li>das ist kiko</li>
-              <li>numoro 1</li>
-              <li>numoro 3</li>
-              <li>hier ist 5.</li>
-              <li>das ist kiko</li>
-              <li>numoro 1</li>
-              <li>numoro 3</li>
-              
-              <li>das ist kiko</li>
-              <li>numoro 1</li>
-              <li>numoro 3</li>
-              <li>hier ist 5.</li>
-              <li>das ist kiko</li>
-            </ul>
-          </section>
+          <List/>
           <section className='map-section'>
           <div id="map" />
           </section>
