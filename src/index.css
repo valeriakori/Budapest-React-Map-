@@ -1,54 +1,63 @@
 body {
-  padding:0;
-  margin:0;
-}
-/* .app-container .map-section {
-  overflow-y: hidden;
-} */
-
-#map {
-  height: 100vh;
-  margin-left: 275px
-
-}
-.app-container .list-section {
-  position: absolute;
-  height: 100vh;
-  width: 275px;
-  float: left;
-  background-color:#CCDFCB; 
-  /* padding:15px; */
-}
-.list-section ul {
-  margin:0;
-  list-style-type: none;
-}
-
-.list-section ul li {
-  font-size: 1.5em;
-  border-bottom: 2px solid #056571;
+  padding: 0;
+  margin: 0;
 }
 
 nav {
   display: block;
   height: 50px;
   text-align: center;
-  background-color: #056571; 
+  background-color: #056571;
 }
 
 nav h1, nav p {
-  display:inline;
+  display: inline;
 }
 
-@media only screen and (max-width:750px) {
-  .app-container {
-    display: flex;
-    flex-direction: column-reverse;
+#map {
+  height: 50vh;
+}
+
+.app-container .list-section {
+  height: 100vh;
+  background-color: #CCDFCB;
+  /* padding:15px; */
+}
+
+.list-section ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-section ul li {
+  font-size: 1.5em;
+  border-bottom: 1px solid #056571;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.map-section {
+  width: 100%;
+  float: none;
+}
+
+.list-section {
+  width: 100%;
+  margin-left: 0;
+}
+
+@media only screen and (min-width:600px) {
+  .app-container .list-section {
+    width: 275px;
+    float: left;
+    position: absolute;
   }
-  .list-section .map-section {
-    width: 100%;
-  }
-  .list-section .list-section {
-    width: 100%;
+  #map {
+    margin-left: 275px;
+    height: 100vh;
   }
 }
