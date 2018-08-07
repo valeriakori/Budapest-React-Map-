@@ -51,8 +51,9 @@ class List extends Component {
   componentDidMount() {
     this.state.places.forEach(place => {
       place.marker = new window.google.maps.Marker({
-        position: place.location,
+        position: {lat: place.location.lat, lng: place.location.lng},
         map: this.props.map,
+        title:place.name,
         animation: window.google.maps.Animation.DROP
       })
     });
