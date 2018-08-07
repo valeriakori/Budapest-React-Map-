@@ -6,6 +6,7 @@
     "react": "^16.4.2",
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.4.2",
+    "react-foursquare": "^1.0.3",
     "react-google-maps": "^9.4.5",
     "react-scripts": "1.1.4"
   },
