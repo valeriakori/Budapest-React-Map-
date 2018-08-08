@@ -69,6 +69,7 @@ class List extends Component {
   makeMarkers = () => {
 
     const { infoWindow, animate } = this.state
+
     //Display markers on the map
     let marker = this.state.places.forEach(place => {
       place.marker = new window.google.maps.Marker({
@@ -93,7 +94,11 @@ class List extends Component {
       });
 
       //Display InfoWindow
-      place.marker.addListener('click', () => infoWindow.open(map, marker));
+      place.marker.addListener('click', () => {
+        infoWindow.setContent(place.name)
+        infoWindow.open(this.map, place.marker)
+      });
+
     });
 
   };
