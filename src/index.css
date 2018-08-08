@@ -32,11 +32,17 @@ nav h1, nav p {
 }
 .list-section input {
   width: 90%;
+  padding: 5px;
+
 }
 
 .list-section ul li {
   font-size: 1.25em;
   border-bottom: 1.5px solid #CD2A3E;
+  padding: 5px;
+}
+.list-section ul li:hover {
+  cursor: pointer;
 }
 
 .app-container {
