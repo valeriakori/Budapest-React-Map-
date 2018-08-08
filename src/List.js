@@ -114,13 +114,31 @@ class List extends Component {
     infoWindow.open(this.map, markers[selectedPlace])
   }
 
+  handleQuery = (query) => {
+    this.setState({ query:query }, this.updatePlaces())
+  }
+
+  updatePlaces = () => {
+    const { query, places } = this.state
+    let displayedPlaces
+    if (query) {
+      displayedPlaces = places.filter(place => place.name.includes(query))
+      this.setState({ places:displayedPlaces })
+      this.makeMarkers();
+    } else {
+      this.setState({places})
+      this.makeMarkers();
+    }
+  }
+
   render() {
     const { places } = this.state;
+    
     return (
       <div className='app-container'>
         <section className='list-section' role='list of places in budapest'>
-          <input placeholder='Search for Location' />
-          <ul>{places.map((place, i) => <li onClick={e => {this.populateInfoWindow(e)}} key={i}>{place.name}</li>)}</ul>
+          <input onChange={e => this.handleQuery(e.target.value)} placeholder='Search for Location' />
+          <ul>{places.map((place, i) => <li onClick={e => this.populateInfoWindow(e)} key={i}>{place.name}</li>)}</ul>
         </section>
 
         <section className='map-section'>
