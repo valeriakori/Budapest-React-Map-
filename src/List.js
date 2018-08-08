@@ -99,9 +99,20 @@ class List extends Component {
         infoWindow.open(this.map, place.marker)
       });
 
+      //place.marker.addListener('click', this.populateInfoWindow(e));
     });
 
   };
+
+  populateInfoWindow = (e) => {
+    const {infoWindow, places, markers} = this.state
+
+
+    let selectedPlace = places.findIndex(place => place.name === e.target.innerText)
+
+    infoWindow.setContent(places[selectedPlace].name)
+    infoWindow.open(this.map, markers[selectedPlace])
+  }
 
   render() {
     const { places } = this.state;
@@ -109,7 +120,7 @@ class List extends Component {
       <div className='app-container'>
         <section className='list-section' role='list of places in budapest'>
           <input placeholder='Search for Location' />
-          <ul>{places.map((place, i) => <li key={i}>{place.name}</li>)}</ul>
+          <ul>{places.map((place, i) => <li onClick={e => {this.populateInfoWindow(e)}} key={i}>{place.name}</li>)}</ul>
         </section>
 
         <section className='map-section'>
