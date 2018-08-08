@@ -23,32 +23,32 @@ class List extends Component {
       {
         name: 'Erzsébet-kilátó',
         location: { lat: 47.5182885, lng: 18.9592638 },
-        requestId: 'erzsébetkilátó'
+        requestId: '4e07708a81dc6d6d36a5ecdb'
       },
       {
         name: 'Gellért-hegy',
         location: { lat: 47.483736, lng: 19.037055 },
-        requestId: 'gellérthegy'
+        requestId: '4e07708a81dc6d6d36a5ecdb'
       },
       {
         name: 'Szimpla Kert',
         location: { lat: 47.497013, lng: 19.063314 },
-        requestId: 'szimpla-kert'
+        requestId: '4b630e1af964a52020602ae3'
       },
       {
         name: 'Hősök Tere',
         location: { lat: 47.514943, lng: 19.077863 },
-        requestId: 'hősök-tere--heroes-square'
+        requestId: '4b6c6ae5f964a52082382ce3'
       },
       {
         name: 'Margitsziget',
         location: { lat: 47.527607, lng: 19.04696 },
-        requestId: 'margitsziget'
+        requestId: '4bb25b49a32876b0dc7d00fe'
       },
       {
         name: 'Országház',
         location: { lat: 47.507121, lng: 19.045669 },
-        requestId: 'parlament'
+        requestId: '4bd6e74b5631c9b63889a630'
       }
     ]
   };
@@ -68,7 +68,7 @@ class List extends Component {
 
   makeMarkers = () => {
 
-    const { infoWindow, animate } = this.state
+    const { infoWindow, animate, markers } = this.state
 
     //Display markers on the map
     let marker = this.state.places.forEach(place => {
@@ -79,7 +79,7 @@ class List extends Component {
         animation: animate.DROP
       });
 
-      this.state.markers.push(place.marker);
+      markers.push(place.marker);
 
       //Add onClick Animation
       place.marker.addListener('click', () => {
@@ -112,10 +112,15 @@ class List extends Component {
 
     infoWindow.setContent(places[selectedPlace].name)
     infoWindow.open(this.map, markers[selectedPlace])
+    console.log(places[selectedPlace])
+
+    // infowindow.addListener('closeclick', function() {
+    //   infowindow.marker = null;
+    // });
   }
 
   handleQuery = (query) => {
-    this.setState({ query:query }, this.updatePlaces())
+    this.setState({ query:query })
   }
 
   updatePlaces = () => {
@@ -123,9 +128,12 @@ class List extends Component {
     let displayedPlaces
     if (query) {
       displayedPlaces = places.filter(place => place.name.includes(query))
+      console.log(displayedPlaces)
+
       this.setState({ places:displayedPlaces })
       this.makeMarkers();
     } else {
+      this.setState({query:''})
       this.setState({places})
       this.makeMarkers();
     }
