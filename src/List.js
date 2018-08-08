@@ -67,7 +67,6 @@ class List extends Component {
   makeMarkers = () => {
     //Display markers on the map
     let marker = this.state.places.forEach(place => {
-      
       place.marker = new window.google.maps.Marker({
         position: place.location,
         map: this.map,
@@ -75,22 +74,27 @@ class List extends Component {
         animation: window.google.maps.Animation.DROP
       });
 
+      this.state.markers.push(place.marker);
+
+
+      //Add onClick Animation
+    place.marker.addListener("click", () => {
+      if (place.marker.getAnimation() !== null) {
+        place.marker.setAnimation(null);
+      } else {
+        place.marker.setAnimation(window.google.maps.Animation.BOUNCE);
+        setTimeout(() => {
+          place.marker.setAnimation(null);
+        }, 750);
+      }
     });
 
-    // //Display InfoWindow
-    // marker.addListener("click", () => infoWindow.open(map, marker));
+      //Display InfoWindow
+      //marker.addListener("click", () => infoWindow.open(map, marker));
+    });
 
-    // //Add onClick Animation
-    // marker.addListener("click", () => {
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(window.google.maps.Animation.BOUNCE);
-    //     setTimeout(() => {
-    //       marker.setAnimation(null);
-    //     }, 750);
-    //   }
-    // });
+    console.log(this.state.markers)
+    
   };
 
   render() {
@@ -99,9 +103,7 @@ class List extends Component {
       <div className="app-container">
         <section className="list-section" role="list of places in budapest">
           <input placeholder="Search for Location" />
-          <ul>
-            {places.map((place,i) => <li key={i}>{place.name}</li>)}
-          </ul>
+          <ul>{places.map((place, i) => <li key={i}>{place.name}</li>)}</ul>
         </section>
 
         <section className="map-section">
