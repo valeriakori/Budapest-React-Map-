@@ -4,6 +4,7 @@ import List from "./List";
 
 class App extends React.Component {
   render() {
+    //const { CLIENT_ID, CLIENT_SECRET, version } = this.state
     return (
       <div>
         <nav>
@@ -11,7 +12,11 @@ class App extends React.Component {
           <br />
           <p>(The City That Unites)</p>
         </nav>
-        <List />
+        <List 
+          // CLIENT_ID={CLIENT_ID} 
+          // CLIENT_SECRET={CLIENT_SECRET}
+          // version={version}
+          />
       </div>
     );
   }
